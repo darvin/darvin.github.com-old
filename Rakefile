@@ -380,6 +380,7 @@ end
 
 desc "update"
 task :update do
+  system "git add ."
   system "git commit -a -m \"some changes\""
   system "git push"
   Rake::Task[:generate].invoke()
