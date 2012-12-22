@@ -21,7 +21,7 @@ Kindlefodder takes a lot of routine work to itself.
 
 First, I specified document's info, including cover:
 
-{% codeblock lang:ruby %}
+``` ruby
 def document 
   # download cover image
   if !File.size?("cover.gif")
@@ -36,7 +36,7 @@ def document
     'masthead' => nil
   }
 end
-{% endcodeblock %}
+```
 
 Then, we are fetching first page (with TOC) and formatting YAML with articles list:
 
