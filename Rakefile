@@ -8,10 +8,11 @@ ssh_user       = "user@domain.com"
 ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = false
-deploy_default = "push"
+rsync_args     = ""  # Any extra arguments to pass to rsync
+deploy_default = "rsync"
 
 # This will be configured for you when you run config_deploy
-deploy_branch  = "master"
+deploy_branch  = "gh-pages"
 
 ## -- Misc Configs -- ##
 
@@ -237,7 +238,7 @@ task :rsync do
     exclude = "--exclude-from '#{File.expand_path('./rsync-exclude')}'"
   end
   puts "## Deploying website via Rsync"
-  ok_failed system("rsync -avze 'ssh -p #{ssh_port}' #{exclude} #{"--delete" unless rsync_delete == false} #{public_dir}/ #{ssh_user}:#{document_root}")
+  ok_failed system("rsync -avze 'ssh -p #{ssh_port}' #{exclude} #{rsync_args} #{"--delete" unless rsync_delete == false} #{public_dir}/ #{ssh_user}:#{document_root}")
 end
 
 desc "deploy public directory to github pages"
@@ -377,13 +378,3 @@ task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
 end
-
-desc "update"
-task :update do
-  system "git add ."
-  system "git commit -a -m \"some changes\""
-  system "git push"
-  Rake::Task[:generate].invoke()
-  Rake::Task[:deploy].invoke()
-end
-
