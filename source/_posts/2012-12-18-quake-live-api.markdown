@@ -12,6 +12,8 @@ categories:
 
 I spent an evening investigating their API, and here are some results:
 
+<!-- more -->
+
 {% gist 4325640 _QuakeLiveApi.md %}
 
 The purpose of this small research is to write [Hubot](http://hubot.github.com) a script that notifies when particular users are playing.

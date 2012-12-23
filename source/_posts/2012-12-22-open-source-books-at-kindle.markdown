@@ -17,6 +17,8 @@ I finally bought my [Kindle Paperwhite](http://www.amazon.com/Kindle-Paperwhite-
  
 I used last one, `kindlefodder`, to write recipes for books [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/) and [Smooth CoffeeScript](http://autotelicum.github.com/Smooth-CoffeeScript/) 
 
+<!-- more -->
+
 Kindlefodder takes a lot of routine work to itself.
 
 First, I specified document's info, including cover:
