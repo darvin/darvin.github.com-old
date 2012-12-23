@@ -384,5 +384,5 @@ task :update do
   system "git commit -a -m \"some changes\""
   system "git push"
   Rake::Task[:generate].invoke()
-  Rake::Task[:deploy].invoke()
+  Rake::Task[:push].invoke()
 end
