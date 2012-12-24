@@ -9,3 +9,24 @@ article {
         color : $sol_yellow;
     }
 }
+a:link, a:visited{ 
+text-decoration:none; 
+}
+
+a:hover{ 
+text-decoration:underline; 
+}
+
+a:active{ 
+text-decoration:underline; 
+} 
+
+.contacts {
+  font-size: 36px; 
+  text-decoration:none; 
+  text-align: center;
+  a:active, a:hover, a:link, a:visited {
+    text-decoration:none; 
+  }
+}
+
