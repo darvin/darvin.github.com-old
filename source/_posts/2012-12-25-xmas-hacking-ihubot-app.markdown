@@ -6,12 +6,11 @@ comments: true
 categories: 
 ---
 
-When all proper people are celebrating Xmas, I like a true code janky hacked together a standalone [Hubot](http://hubot.github.com) iOS app. It's powered by Heroku installation with self-written [hubot-http](https://github.com/darvin/hubot-http) adapter, which just responds to `POST`s on `ihubot.herokuapp.com/hubot/tell` address. So, source of app is on [github](https://github.com/darvin/iHubot), demo is here:
+When all proper people are celebrating Xmas, I like a true code janky hacked together a standalone [Hubot](http://hubot.github.com) iOS app. It's powered by Heroku installation with self-written [hubot-http](https://github.com/darvin/hubot-http) adapter, which just responds to `POST`s on `ihubot.herokuapp.com/hubot/tell` address. So, source of app is on [github](https://github.com/darvin/iHubot)
 
- <iframe src="//www.pieceable.com/view/embed/v2/cqd/5572b38a6ca0b652facdc74561b8694e5d2f3240" width="390" height="550" frameBorder="0"></iframe>
- 
-Try `animate me`, `pug me`, `youtube me`.
- 
+
+{% img center http://darvin.github.com/iHubot/images/screen0-big.png 200 %}
+
 Stuff that I have used for this 5-hour hackaton:
 
 <!-- more -->
