@@ -6,10 +6,11 @@ comments: true
 categories: 
 ---
 
-When all proper people are celebrating Xmas, I like a true code janky hacked together a standalone [Hubot](http://hubot.github.com) iOS app. It's powered by Heroku installation with self-written [hubot-http](https://github.com/darvin/hubot-http) adapter, which just responds to `POST`s on `ihubot.herokuapp.com/hubot/tell` address. So, source of app is on [github](https://github.com/darvin/iHubot)
+When all proper people are celebrating Xmas, I like a true code janky hacked together a standalone [Hubot](http://hubot.github.com) iOS app. 
+{% img right http://darvin.github.com/iHubot/images/screen1-big.png 200 %}
+It's powered by Heroku installation with self-written [hubot-http](https://github.com/darvin/hubot-http) adapter, which just responds to `POST`s on `ihubot.herokuapp.com/hubot/tell` address. So, source of app is on [github](https://github.com/darvin/iHubot)
 
 
-{% img center http://darvin.github.com/iHubot/images/screen0-big.png 200 %}
 
 Stuff that I have used for this 5-hour hackaton:
 
