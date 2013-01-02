@@ -7,9 +7,9 @@ categories:
 ---
 
 I dropped **TextMate 2** and **Sublime Text 2** this week.
-TextMate just felt little bit obsolete and unsupported, and
-I just hated Sublime Text's problems with color output in 
-console (it was showing like `ESC`-sequences seriously, guys?)
+TextMate just felt a little bit obsolete and unsupported, and
+I just hated Sublime Text's problems with the color output in 
+the console (it was showing like `ESC` sequences - seriously, guys?)
 Also, turns out there is no syntax coloring for both of
 them for Forth language.
 

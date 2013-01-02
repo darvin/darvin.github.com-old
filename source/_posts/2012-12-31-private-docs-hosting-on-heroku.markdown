@@ -11,7 +11,10 @@ categories:
 
 <!-- more -->
 
-It allows you to upload static site in `.zip` archive. For convenience, it uses GitHub-provided authentication. Heroku doesn't provide filesystem write access, so the app stores all your stuff in a free 0.5 GB [MongoLab](https://mongolab.com) database.
+It allows you to upload static site in `.zip` archive. For
+convenience, it uses GitHub-provided authentication. Heroku 
+doesn't provide filesystem write access, so the app stores all
+your stuff in a free 0.5 GB [MongoLab](https://mongolab.com) database.
 
 Also, it provides nice command-line snippets for uploading (for CI/makefile usage, I guess):
 

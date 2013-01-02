@@ -11,7 +11,8 @@ Just because it's new 2013 year, I started to learn [Forth](http://en.wikipedia.
 <!-- more -->
 
 
-So, I started with a cool book ["Starting Forth"](http://home.iae.nl/users/mhx/sf.html) (with writing a [kindlefodder](https://github.com/danchoi/kindlefodder) [recipe](https://github.com/darvin/kindlefodder/blob/master/recipes/starting_forth.rb)). A very nice book, btw. Turns out, the only serious and up-to-date open source implementation of ANS Forth [gforth](http://www.gnu.org/software/gforth/) has a broken homebrew formula, so I had to [fix it](https://github.com/darvin/homebrew/blob/master/Library/Formula/gforth.rb)
+So, I started with a cool book 
+["Starting Forth"](http://home.iae.nl/users/mhx/sf.html) (with writing a [kindlefodder](https://github.com/danchoi/kindlefodder) [recipe](https://github.com/darvin/kindlefodder/blob/master/recipes/starting_forth.rb)). A very nice book, btw. Turns out, the only serious and up-to-date open source implementation of ANS Forth [gforth](http://www.gnu.org/software/gforth/) has a broken homebrew formula, so I had to [fix it](https://github.com/darvin/homebrew/blob/master/Library/Formula/gforth.rb)
 
 Also, anything around Forth is pretty obsolete - for example, there is couple [package](http://gitorious.org/forth-tools/supply/trees/master) [managers](http://code.google.com/p/halfpence/) and no comment - documentation generation system. So plan is to write one (probably it gonna be literate-programming style [docco](http://jashkenas.github.com/docco/) clone with Forth-specific features)
 
