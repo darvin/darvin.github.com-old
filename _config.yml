@@ -139,4 +139,5 @@ prose:
       comments: true
       categories: 
       published: true
+      date: "CURRENT"
 
