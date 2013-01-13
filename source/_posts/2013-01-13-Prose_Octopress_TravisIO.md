@@ -45,3 +45,5 @@ It’s kinda complex :) You just have to put your encoded SSH key instead of min
 {% gist 4242707 %}
 
 It works like magic!
+
+PS. So, it builds on Travis twice. [First time](https://travis-ci.org/darvin/darvin.github.com/builds/4121753) when you are pushing to `source` branch - Travis generates static site and pushes it back to `master` branch (to GitHub Pages). That push triggers [second build](https://travis-ci.org/darvin/darvin.github.com/builds/4121777) on Travis, although I have `branches: only: source` in my `.travis.yml` on `source` branch. As workaround, I'm echoing `script: "ls *.html"` to `master`'s `.travis.yml`. Still, on each my blog update, Travis creates 2 VM. I hope it's not so abusive.
