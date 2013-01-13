@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Code n Stuff]]></title>
+  <link href="http://darvin.github.com/atom.xml" rel="self"/>
+  <link href="http://darvin.github.com/"/>
+  <updated>2013-01-13T07:40:58+00:00</updated>
+  <id>http://darvin.github.com/</id>
+  <author>
+    <name><![CDATA[Sergey Klimov]]></name>
+    <email><![CDATA[sergey.v.klimov@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[XCode projects without merge pains]]></title>
+    <link href="http://darvin.github.com/blog/2013/01/03/xcode-projects-without-merge-pains/"/>
+    <updated>2013-01-03T22:09:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2013/01/03/xcode-projects-without-merge-pains</id>
+    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/2004135/how-to-merge-conflicts-file-project-pbxproj-in-xcode-use-svn">XCode&#8217;s</a>
+<a href="http://stackoverflow.com/questions/4022362/merging-xcode-project-files">formats</a>
+<a href="https://discussions.apple.com/thread/3081125?start=0&amp;tstart=0">are</a>
+<a href="http://stackoverflow.com/questions/10552082/finding-the-error-in-xcodes-project-pbxproj-after-merge">shitty</a>.
+They are pain to merge and are impossible to read. YAML is pretty.</p>
+
+<p>Imagine a brave new world with XCode&#8217;s <code>nib</code>s, model files, storyboards,
+project files - all in YAML. Thats what <a href="https://github.com/darvin/xcode-yamlizer">that project</a> do!</p>
+
+<p>You can see <a href="https://github.com/darvin/iHubot/blob/xcode-yamlizer/iHubot/iHubot.xcdatamodeld/iHubot.xcdatamodel/contents.yaml">how</a>
+<a href="https://github.com/darvin/iHubot/blob/xcode-yamlizer/iHubot/iHubot.xcdatamodeld/.xccurrentversion.yaml">pretty</a>
+<a href="https://github.com/darvin/iHubot/blob/xcode-yamlizer/iHubot/ViewController.xib.yaml">it</a>
+<a href="https://github.com/darvin/iHubot/blob/xcode-yamlizer/iHubot.xcodeproj/project.pbxproj.yaml">looks</a>
+on Github in this sample <a href="https://github.com/darvin/iHubot/blob/xcode-yamlizer/">repo</a>.</p>
+
+<!-- more -->
+
+
+<h2>Installation</h2>
+
+<p>Install XcodeYamlizer with:</p>
+
+<pre><code>$ gem install xcode-yamlizer
+</code></pre>
+
+<h2>Usage</h2>
+
+<h3>Git hooks</h3>
+
+<p>The best and recommended way is to install <code>pre-commit</code> and <code>post-merge</code> hook.
+You can do that from your project&#8217;s working directory:</p>
+
+<pre><code>$ xcode-yamlize install
+</code></pre>
+
+<p>Then, before commit, <code>pre-commit</code> hook will:</p>
+
+<ul>
+<li>find all obscure <code>.xib</code>s, <code>.xcdatamodel</code>s, project files, etc.</li>
+<li>create appropriate YAML files with the same name + <code>.yaml</code> extension</li>
+<li>add them to commit (if necessary)</li>
+<li>add all obscure files to <code>.gitignore</code> (if necessary)</li>
+<li>remove all obscure files from git (if necessary) (but will leave them be in file system)</li>
+</ul>
+
+
+<p>After merge, <code>post-merge</code> hook will:</p>
+
+<ul>
+<li>copy all obscure files to the same name + <code>~</code> postfix</li>
+<li>overrite all obscure files from the version controlled <code>yaml</code>es.</li>
+</ul>
+
+
+<h3>Standalone</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcode-yamlizer
+</span><span class='line'>options:
+</span><span class='line'> -input (-i)  convert file (autodetects direction)
+</span><span class='line'> -dir (-d)    convert directory (default direction - from XCode to YAML)
+</span><span class='line'> -to_xcode    direction: from YAML to XCode format
+</span><span class='line'> -verbose     verbose mode
+</span><span class='line'> -help (-h)   show help</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VIM]]></title>
+    <link href="http://darvin.github.com/blog/2013/01/02/vim/"/>
+    <updated>2013-01-02T03:22:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2013/01/02/vim</id>
+    <content type="html"><![CDATA[<p>I dropped <strong>TextMate 2</strong> and <strong>Sublime Text 2</strong> this week.
+TextMate just felt a little bit obsolete and unsupported, and
+I just hated Sublime Text&#8217;s problems with the color output in
+the console (it was showing like <code>ESC</code> sequences - seriously, guys?)
+Also, turns out there is no syntax coloring for both of
+them for Forth language.</p>
+
+<p>So, I&#8217;m back on VIM! With <a href="https://github.com/alloy/macvim">Alloy&#8217;s fork with drawer</a>
+and <a href="https://github.com/spf13/spf13-vim">spf13</a> config. Looks awesome!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why does anyone uses I J for loop counter variables names]]></title>
+    <link href="http://darvin.github.com/blog/2013/01/02/learning-forth-for-the-greater-good/"/>
+    <updated>2013-01-02T02:19:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2013/01/02/learning-forth-for-the-greater-good</id>
+    <content type="html"><![CDATA[<p>Just because it&#8217;s new 2013 year, I started to learn <a href="http://en.wikipedia.org/wiki/Forth_(programming_language">Forth</a>) language. It&#8217;s cool <a href="http://en.wikipedia.org/wiki/Stack-oriented_programming_language">stack-oriented</a> language, with strict <a href="http://en.wikipedia.org/wiki/KISS_principle">KISS</a> principle in design. It&#8217;s a shame that it&#8217;s completely obsolete and forgotten.</p>
+
+<!-- more -->
+
+
+<p>So, I started with a cool book
+<a href="http://home.iae.nl/users/mhx/sf.html">&#8220;Starting Forth&#8221;</a> (with writing a <a href="https://github.com/danchoi/kindlefodder">kindlefodder</a> <a href="https://github.com/darvin/kindlefodder/blob/master/recipes/starting_forth.rb">recipe</a>). A very nice book, btw. Turns out, the only serious and up-to-date open source implementation of ANS Forth <a href="http://www.gnu.org/software/gforth/">gforth</a> has a broken homebrew formula, so I had to <a href="https://github.com/darvin/homebrew/blob/master/Library/Formula/gforth.rb">fix it</a></p>
+
+<p>Also, anything around Forth is pretty obsolete - for example, there is couple <a href="http://gitorious.org/forth-tools/supply/trees/master">package</a> <a href="http://code.google.com/p/halfpence/">managers</a> and no comment - documentation generation system. So plan is to write one (probably it gonna be literate-programming style <a href="http://jashkenas.github.com/docco/">docco</a> clone with Forth-specific features)</p>
+
+<p>So, what about <code>I</code> and <code>J</code> as traditional loop counter variables names?</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>: table 
+</span><span class='line'>  cr 11 1 
+</span><span class='line'>  do 
+</span><span class='line'>    11 1 
+</span><span class='line'>    do 
+</span><span class='line'>      i j * 5 u.r
+</span><span class='line'>    loop 
+</span><span class='line'>    cr 
+</span><span class='line'>  loop ;
+</span><span class='line'>
+</span><span class='line'>table</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>(again, it&#8217;s a shame that <a href="http://pygments.org/">Pygments</a> <a href="http://pygments.org/languages/">support Ada and Befunge</a>, but does not support Forth)</em></p>
+
+<p>Here we have two loops. Outer loop uses <code>1st</code> and <code>2nd</code> item of control stack for counter and finish value (<code>1</code> and <code>11</code> initially), inner loop uses <code>3rd</code> and <code>4th</code> (<code>1</code> and <code>11</code> initially, as well). Word <code>I</code> in Forth copies <code>1st</code> value from control stack on top of stack, <code>J</code> copies <code>3rd</code> value from control stack on top of stack, so they look as loop counters. That&#8217;s it! Full KISS! :)</p>
+
+<p>Output:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1    2    3    4    5    6    7    8    9   10
+</span><span class='line'>2    4    6    8   10   12   14   16   18   20
+</span><span class='line'>3    6    9   12   15   18   21   24   27   30
+</span><span class='line'>4    8   12   16   20   24   28   32   36   40
+</span><span class='line'>5   10   15   20   25   30   35   40   45   50
+</span><span class='line'>6   12   18   24   30   36   42   48   54   60
+</span><span class='line'>7   14   21   28   35   42   49   56   63   70
+</span><span class='line'>8   16   24   32   40   48   56   64   72   80
+</span><span class='line'>9   18   27   36   45   54   63   72   81   90
+</span><span class='line'>10  20   30   40   50   60   70   80   90  100
+</span><span class='line'> ok</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Private docs hosting on Heroku]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/31/private-docs-hosting-on-heroku/"/>
+    <updated>2012-12-31T18:00:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/31/private-docs-hosting-on-heroku</id>
+    <content type="html"><![CDATA[<p><a href="http://pages.github.com/">GitHub Pages</a> are beautiful, but if you need nice and smooth private static site hosting it is not gonna work: <code>gh-pages</code> are public even for private repos. Of course, I could have gone with S3, but for fun I hacked together <a href="http://nodejs.org/">NodeJS</a>-powered <a href="http://www.mongodb.org/">MongoDB</a>-backed <a href="http://www.heroku.com/">Heroku</a> hosted <a href="http://static-sites-hosting.herokuapp.com/">solution</a></p>
+
+<!-- more -->
+
+
+<p>It allows you to upload static site in <code>.zip</code> archive. For
+convenience, it uses GitHub-provided authentication. Heroku
+doesn&#8217;t provide filesystem write access, so the app stores all
+your stuff in a free 0.5 GB <a href="https://mongolab.com">MongoLab</a> database.</p>
+
+<p>Also, it provides nice command-line snippets for uploading (for CI/makefile usage, I guess):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat docs.zip | curl -F "siteName=YOUR_SITE_NAME" -F "archive=@-" http://static-sites-hosting.herokuapp.com/publish/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or, if you want to allow access only for your friends &amp; yourself:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat docs.zip | curl -F "siteName=YOUR_SITE_NAME" -F "users=YOUR_GITHUB_USERNAME, friend1, friend2" -F "archive=@-" http://static-sites-hosting.herokuapp.com/publish/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Kinda good-looking GUI done with <a href="http://twitter.github.com/bootstrap/">Twitter-Bootstrap</a></p>
+
+<p>So, <a href="https://github.com/darvin/heroku-static-sites-hosting">heroku-static-sites-hosting</a> on GitHub and <a href="http://static-sites-hosting.herokuapp.com/">hosted version</a> on Heroku</p>
+
+<p>PS: I was using <a href="https://github.com/zappajs/zappajs">ZappaJS</a>, CoffeeScript web-framework for initial version. I rewrote it on <a href="http://expressjs.com/">ExpressJS</a>, &#8216;cause Zappa is to magical for my taste.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ExpressJS experiments]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/28/expressjs-experiments/"/>
+    <updated>2012-12-28T21:15:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/28/expressjs-experiments</id>
+    <content type="html"><![CDATA[<p>Played a little bit with <a href="http://expressjs.com/">ExpressJS</a>. <a href="https://github.com/twilson63/express-coffee">coffee-express</a> boilerplate was a good starting point. Made my very own fork with  <a href="http://mongoosejs.com/">Mongoose</a> models - <a href="https://github.com/darvin/express-coffee-mvc">express-coffee-mvc</a>.</p>
+
+<p>Really nice sinatra-flask-style framework. Default <a href="http://jade-lang.com/">Jade</a> templates are just awesome! For API-only applications without web part <a href="http://mcavage.github.com/node-restify/">restify</a> feels like a better fit though thanks to compatibility of <a href="https://github.com/senchalabs/connect/wiki">connect-middleware</a> between different frameworks.</p>
+
+<p>PS: just found the best web-framework for CoffeeScript: <a href="http://zappajs.org/">Zappa</a>. Just like it suppose to be in CoffeeScript!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Xmas hacking - iHubot app]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/25/xmas-hacking-ihubot-app/"/>
+    <updated>2012-12-25T07:42:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/25/xmas-hacking-ihubot-app</id>
+    <content type="html"><![CDATA[<p>When all proper people are celebrating Xmas, I like a true code janky hacked together a standalone <a href="http://hubot.github.com">Hubot</a> iOS app.
+<img class="right" src="http://darvin.github.com/iHubot/images/screen1-big.png" width="200">
+It&#8217;s powered by Heroku installation with self-written <a href="https://github.com/darvin/hubot-http">hubot-http</a> adapter, which just responds to <code>POST</code>s on <code>ihubot.herokuapp.com/hubot/tell</code> address. So, source of app is on <a href="https://github.com/darvin/iHubot">github</a></p>
+
+<p>Stuff that I have used for this 5-hour hackaton:</p>
+
+<!-- more -->
+
+
+<ul>
+<li><a href="http://hubot.github.com">Hubot</a> himself.</li>
+<li><a href="http://alexbarinov.github.com/UIBubbleTableView/">UIBubbleTableView</a> for beautiful chat bubbles message list view</li>
+<li><a href="http://afnetworking.com">AFNetworking</a> - probably, the best networking library for Objective-C</li>
+<li><a href="https://github.com/larcus94/LBYouTubeView">LBYouTubeView</a> - to show YouTube</li>
+<li><a href="https://github.com/ondalabs/OLImageView">OLImageView</a> - to show GIFs</li>
+<li><a href="https://github.com/rs/SDWebImage">SDWebImage</a> - to fetch images into <code>UIImageView</code>s</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[brew cask - proper way to manage OSX apps]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/24/brew-cask-proper-way-to-manage-osx-apps/"/>
+    <updated>2012-12-24T02:40:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/24/brew-cask-proper-way-to-manage-osx-apps</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew cask install dropbox steam textmate2 one-password cyberduck colloquy intellij-community</span></code></pre></td></tr></table></div></figure>
+
+
+<p><i class="icon-external-link"></i><a href="https://github.com/phinze/homebrew-cask">brew-cask</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[puts for Node.js]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/23/puts-for-node-dot-js/"/>
+    <updated>2012-12-23T04:34:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/23/puts-for-node-dot-js</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>coffee&gt; puts = require 'puts'
+</span><span class='line'>[Function]
+</span><span class='line'>coffee&gt; puts {"hello":{"better":["then":"ruby"]}}
+</span><span class='line'>└─ hello
+</span><span class='line'>   └─ better
+</span><span class='line'>      └─ 0
+</span><span class='line'>         └─ then: ruby</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="https://github.com/darvin/node-puts">node-puts</a>. Using <a href="https://github.com/notatestuser/node-treeify">treeify</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install puts</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Prose.io + Octopress + Travis-CI = ♥]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/22/your-filename/"/>
+    <updated>2012-12-22T22:07:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/22/your-filename</id>
+    <content type="html"><![CDATA[<p>I wanted to have nice workflow to write to my Blog. So idea was:</p>
+
+<ol>
+<li>I&#8217;m editing or creating post in <a href="http://prose.io">Prose.io</a> or just in GitHub&#8217;s web editor.</li>
+<li>Wonderful open-source continious integration server <a href="https://travis-ci.org/">Travis-CI</a> builds my <a href="http://octopress.org/">Octopress</a> blog and pushes generated version back to <a href="http://pages.github.com/">GitHub Pages</a></li>
+</ol>
+
+
+<p>I managed to implement that.</p>
+
+<!-- more -->
+
+
+<h2>Nice settings for Prose.io to edit Octopress blog</h2>
+
+<p>First, I need Prose.io to be nice with octopress. I added these lines to end of <code>_config.yml</code> of Octopress blog:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1">#prose.io settings</span>
+</span><span class='line'><span class="l-Scalar-Plain">prose</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">rooturl</span><span class="p-Indicator">:</span> <span class="s">&quot;source&quot;</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">metadata</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="s">&quot;source/_posts&quot;</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+</span><span class='line'>      <span class="no">layout: post</span>
+</span><span class='line'>      <span class="no">title: &quot;Title&quot;</span>
+</span><span class='line'>      <span class="no">comments: true</span>
+</span><span class='line'>      <span class="no">categories: </span>
+</span><span class='line'>      <span class="no">published: true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thats exactly what it looks like. It tells Prose.io, which directory to load, and specifies Octopress&#8217;s metadata.</p>
+
+<h2>Travis</h2>
+
+<p>It&#8217;s a pain. This is my <code>.travis.yml</code>:</p>
+
+<div><script src='https://gist.github.com/4522846.js'></script>
+<noscript><pre><code>## Kinda does not works in current Travis :(
+branches:
+  only:
+    - source
+language: ruby
+rvm:
+  - 1.9.3
+before_script: 
+  # Set read-write git origin
+  - git remote set-url origin $REPO.git
+  # Unpack ssh key for git
+  - echo -n $id_rsa_{00..30} &gt;&gt; ~/.ssh/id_rsa_base64
+  - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 &gt; ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  # Disable SSH server fingerprint verification
+  - echo -e &quot;Host github.com\n\tStrictHostKeyChecking no\n&quot; &gt;&gt; ~/.ssh/config
+  # Set deployment target to github pages
+  - rake setup_github_pages[$REPO]
+script:
+  # Generate site
+  - rake generate
+after_script:
+  # Workaround for travis not to try run rake on generated site
+  - ! 'echo ''script: &quot;ls *.html&quot;'' &gt; public/.travis.yml'
+  # Deploy!
+  - rake deploy
+
+env:
+  global:
+    # Repo read-write address
+    - REPO=&quot;git@github.com:darvin/darvin.github.com&quot;
+    # SSH key. Encoded. See https://gist.github.com/4242707
+    - secure: &quot;XEOeB8uR5rakQrk0JeQIsPvf6A8/OctcY9TiBdIHSsoHFIonwFJLy61bGHat\nmdk0AMT0yna55vgbw6RtB0vI40jx28+lETjrK4psnBZggicgYmO0VdeGX3Xt\nCow6LyhltDOgNthK1Nx8ZagKCd0k3LICJbW+B5rcD5ERuYC+P0Q=&quot;
+    - secure: &quot;E39AGLwfNlAG6Xh8T01ribrfXcSIW5qOvMrzC/a9leNKw2/yJyfPAa97dCGA\nzNbaJPDwsPCf6Q9hgPQP/57B/7j0vHp27NDO19RKYrJg43D6LFBbNOfYYW6X\ntc/+74OPOZn75zQRWwK6XXDxVabSnVlDnKgRFURWHytiOe3yRiM=&quot;
+    - secure: &quot;F1sCCMqNLjfbbda1uIa+iGKbx23uvznByfrAv12VYguREBWfNMJhlEaQz/Gp\n2eOR9EsnDKj8khCwM/UNVMd1POdhyEKza6GhMWFHoKOD311v/RSQhqjTa7Eo\nbK963rTXszXc6Dq9rzA4vZI+i3LRjdi4nMmd0kOlTnZ9KhSeTGw=&quot;
+    - secure: &quot;hq0qDZ9ZezrmO+3h5SoqoubpjvAL/h89WkiQloWcIQqpnpe2bUXkL26UKAUZ\nw5JQWGEwOBQ2XZV5svS038Yxdh8N+32S8XU8BXWd/1UmnsYsCLAfyKAuULB5\n1yn7rAQ2C6rwfBFeJsBKlgYdXNLbM9dhNvgQwEFvjP+bzHwRlTE=&quot;
+    - secure: &quot;BkUFJk7so+bGwjbDMJr8GmoTx9VhZlidcJH1lLXJ/u/uUuJ9DAwZoutBoPkJ\ng4QydpX1IA5It0JOKhuOv6H5fJ8vkOYMJb+MjGv2wpGgPUvJ2VjiXHdfb+EI\nw2iE0RKdI/SjpD+cTPZ6YXG8/8NKeD+8uUats7nR/l95NWrsocA=&quot;
+    - secure: &quot;Eh+sMxw5t3nZVSksvuDg7wg8YOln6CPw//pD5PTIBE8uxBJc2pouVF/59RDa\nYCx1cwzYDbcTEE8PQOWExzDR+VU5y3sBJqO/hgofq0i0jtNrEpcMma7vL7vJ\norML3RPw+Q9xJsdkw/Y/l3UEwvvabz/6yRvPJpfKlXcf3xnjc98=&quot;
+    - secure: &quot;iuQqC2cNsarrQuAZuTZNVbZyjePhgaOUY+HcBa/eo9jxg1hRfLy0//+2jl4M\nQZWpjhSzSgbXRsPP+uEWnthk+4tZ+h4nZZmMoWRywP2j5524zysxER0kent1\nADPWWzKTz+k0wszheI2sLFg35AkUHhrGAoRKRXfZLtS7RYYytYs=&quot;
+    - secure: &quot;MfWf1rrBO91OVEZRuriIqlmebHTGzRbcQoYytCSIfIDMhpVtI/7EMGzaAo+q\n2MqoGO6fWj9Wny1dlF7BZ1IZNOPbKiUyVCs/r4HIIFozo/ByzC1hQyiBzEih\nbz2NitlvoHnRd1bxHh6CNgElmcbYRpUE9goEiGiAMZkgNBu0VGY=&quot;
+    - secure: &quot;jGjGtCdKbSJ5ZJa7PBUnZWj4CsEEeyPApMh2pQrGcLDdKH7Khiaqz9KsRnRP\nLPwLT5TEpzq8XvOozbxCOVJJ+bt0zhw2YrMJ3KOTfC2/kizAnvfVLpGNgnP5\nfW79NOBWpoyQ5v56Db1tnp+uq6QrlL4xqOTrdHrk+eAZMGxVsyw=&quot;
+    - secure: &quot;b1ME2+WNB+TlFihpVlbvuiWieeT29wUNST4vpz93GjonJ1Y7hgV0kAE8MjM5\nPJrmBohDJbughxhstiKeARM4YP0QQORHF7ughSB8qR3oqduj4VFMX2+djP5w\ninhb6LFdiZXoUTjVYZH82YqCbzrjeuL5TJ3KbDPuRrPO0f8yqUA=&quot;
+    - secure: &quot;UeTrmbRpH1FLxUGtnvQPm4yQzcNZ5txMlyIqhtTn3wKlyQnz62J1wiiJu5pY\nd7p6gDNU0Cnn6dVUwHNjkJfQNIoNjYTVxxMPyXgBcOjwQEYmkJTAdRwHoi0v\njzLL53ja66tzGBX7yjm+hBoFH9WL/PBc7R7ITXABzSmz7IAaCiw=&quot;
+    - secure: &quot;hsP8UEryrgbVSxTBj8YFd9Ea4BPKbhdOFLBYezxPxYlt4r/0uGq/XdcBF6D7\n4EE1Q7qY2j4Ysywza9air2metVqhrfqHhKmPRIyelZfOV5jGmtjS/SJIw/ko\nemr0rZIjCzciku1ZIHOA87x+a0T9Sv1s4hoHL5weJY59Ygb+m+E=&quot;
+    - secure: &quot;QUPTR9R9/qrNnUIlt5aHUEK9cYM+rJZFP22AoydgYOLw/Z9OyUBXH036I3Bw\nIHtrLQnR4XX5BjRPbAkUxqcn7/l57/F6EmtifRiFljhJuH54ZF5U++YYZN/N\nNKVI0cedZXdZZBNV388iC9BcgTQulH/Su9YlpXMxpIr4jk09blE=&quot;
+    - secure: &quot;j7djWCDu6uctBk3U/17vbFh8dQd2Kf8HlbHlumxbFg07HLMlbLFH4IdDpBNL\nzriio50oH+7Vn7lDJaMcktknxqqKUQi8MSwQCMe+bp4tlXHsC6htIajFtnBD\nMmhBGS3Zhg8yOj74hZITULicvv0AbcBollUIzhlZHkMKqqWMKr4=&quot;
+    - secure: &quot;WBSvuExaOZl/FhdbxgZdRT5jY+NPkCgKlEBdUudnHmPIlzl+wipilhENQjxW\nBX6ZfCI2r0kYBzPpFQ6NgM4mNB/RkaH6osjTdy1ELqGPMJCqYmP6flab2+Bs\nQIeXfESq1bh9Ivacn6NmvZeGWoNMK8mXG/kC/V0z+HmvCfzKowU=&quot;
+    - secure: &quot;XF2rDF24Nb8x/EwCSBNrSDbRbLYGF2UEIAhiDw2YdVhJUBldGOsfVFFlfK7T\ntSEub7INL/gTBFG8TzToxXJdNFYuKnxpUD3DTYCs1YFRvrB1804h1VMS/ETB\ndHOXl1Yv496SB/R85Lw7kmkdwSWNhgYl37JzikE2q8WXSev0JAU=&quot;
+    - secure: &quot;cILCBwet4+mZvjGisK6/NwQQbnxuEUzLVLF8D1+M3rjdzDJ+cL/Nd9ZFQRMg\nNb55Gtm6cmL+1ru3ghIMz98zI0ZUX89q3dDAWyRal7zH9eU8S+ywX77gcsG7\neiNUdZWB1mQ+hW7yKiUU7bnBmH2pzQZrBitlRaVyR/wU4Jg9qts=&quot;
+    - secure: &quot;QbQ1/fpqjQbfZf3DZC8mQctmUJom3jvpYtQ6RzCfPZPGDHOfJba4QIKizirG\nUn++Y0FfkjRmPwUdOzkRMe/TJdUG60OiFis5P4LyK5RBm+83etM6Cl1Wjp8T\nLDVLesDowPJPwLYCMGsw1HMAAz0XFhyZ/3pvH9sfVklyi0C//uQ=&quot;
+    - secure: &quot;Ig7rtS7mAcFJvHlPNrFWw6kyVaOkImOYltP4ln673H7l2CBlzdOCW2vIZ32C\nKDWYt7yAGissoHQLvnSggfl+7TaTy/vGnHS5UmduIdldQUpe/P9E3sbfZHzu\noFYSXYvez+mnb1aTBBUe9OsO14juJBi/ilG561Hj9ObM/5oOrVU=&quot;
+    - secure: &quot;FjCvw3eB0ovKcxpJWNcMwm1fLm5CRWdptA9jMhr/cHyGWFuWuISa8kiBGbPv\nCGXxaJPxwF87M12opSBv0ou9nJxDm/2ndsk3qpKjVB23kNazBHRr2k6Mp4Jd\nIFm109AXvcQtYCePwOKQCVF69OYmkWGi9hj0ksc9RaGxHoC3zoA=&quot;
+    - secure: &quot;FMXWtL45pVtdYTj1bdQWBjHTwWIg69TaWKQzzO7dX/SMiY7mW0kieIZFrVnr\nBeGH+Mx93qoCyv402xPk463TQ2coLOYnH38WvAxMyeHjoX6n9yn+cz1Jz4Vk\nlNdoZ7K6FpR3ws5/ffwWGNbDP0350udIP6DDo9TPtrOe/slQoNg=&quot;
+    - secure: &quot;TMQEKRDD4cU1/6adZChFwEjbaK83oB6wLhTYQ63fPz2TDBfJYGr8jkb7AWJm\nSaMfLy/1XNi3l/7OfkAbt8RZrasitDx3nsbWuS8NgT9GRMh1u9PsLXyiLpZe\nnkdd6B0A9AraaQAgDBbEF1WsevtOKAaHWnNldtq7GPi7lo7Yk8Y=&quot;
+    - secure: &quot;F8stcE8lL3iVF5k0rBpFomfimBBE8SJHcI/OCFD4QJqdG0AQf5SxHDAj2hQc\nzGqCW2nACs+8YJd8pIv4A8MhU6ykjgKDp1cKl4sLS0mXexjRkjqcqgoFywgw\nJ5oTUYQp0yoN+4hUFTMUrS/BvFpXsrurZoTcOu5J2EKdBV5/D+s=&quot;</code></pre></noscript></div>
+
+
+<p>It&#8217;s kinda complex :) You just have to put your encoded SSH key instead of mine (all <code>- secure:</code> lines) and put your repo address (<code>- REPO=</code>). To encode SSH key for Travis I used this gist:</p>
+
+<div><script src='https://gist.github.com/4242707.js'></script>
+<noscript><pre><code>Tricks to add encrypted private SSH key to .travis.yml file
+
+
+To encrypt the private SSH key into the &quot;-secure: xxxxx.....&quot; lines to place in the .travis.yml file, generate a deploy key then run: (to see what the encrypted data looks like, see an example here: https://github.com/veewee-community/veewee-push/blob/486102e6f508214b04414074c921475e5943f682/.travis.yml#L21
+
+base64 --wrap=0 ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa_base64
+ENCRYPTION_FILTER=&quot;echo \$(echo \&quot;-\&quot;)\$(travis encrypt veewee-community/veewee-push \&quot;\$FILE='\`cat $FILE\`'\&quot; | grep secure:)&quot;
+split --bytes=100 --numeric-suffixes --suffix-length=2 --filter=&quot;$ENCRYPTION_FILTER&quot; ~/.ssh/id_rsa_base64 id_rsa_
+
+
+Ha! it takes 30 lines to squeeze it all in.
+
+
+To reconstitute the private SSH key once running inside Travis: (see example use here: https://github.com/veewee-community/veewee-push/blob/486102e6f508214b04414074c921475e5943f682/.travis.yml#L13)
+
+  - echo -n $id_rsa_{00..30} &gt;&gt; ~/.ssh/id_rsa_base64
+  - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 &gt; ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - echo -e &quot;Host github.com\n\tStrictHostKeyChecking no\n&quot; &gt;&gt; ~/.ssh/config</code></pre></noscript></div>
+
+
+<p>It works like magic!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Open source books @ Kindle]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/22/open-source-books-at-kindle/"/>
+    <updated>2012-12-22T14:07:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/22/open-source-books-at-kindle</id>
+    <content type="html"><![CDATA[<p>I finally bought my <a href="http://www.amazon.com/Kindle-Paperwhite-Touch-light/dp/B007OZNZG0">Kindle Paperwhite</a> (which is <a href="http://wiki.mobileread.com/wiki/Kindle_Touch_Hacking">jaibroken</a> btw). The cool thing about Kindle that it has community that provides a lot of good stuff:</p>
+
+<ul>
+<li><a href="https://github.com/omz/docset2kindle">Converter of Apple Docset documentation to Kindle</a></li>
+<li><a href="https://github.com/agentzh/src2kindle">Converter of source code trees</a></li>
+<li><a href="https://github.com/pingwin/RFC-2-Kindle">Converter of</a> <a href="http://en.wikipedia.org/wiki/Request_for_Comments">RFCs documents</a></li>
+<li><a href="https://github.com/charlax/Python-Documentation-Kindle">Converter of Python documentation</a></li>
+<li><a href="https://github.com/CrazyCoder/coolreader-kindle-qt">Port of Coolreader</a></li>
+<li><a href="https://github.com/danchoi/kindlefodder">Framework for writing &#8220;recipes&#8221; to convert any book</a></li>
+</ul>
+
+
+<p>I used last one, <code>kindlefodder</code>, to write recipes for books <a href="http://arcturo.github.com/library/coffeescript/">The Little Book on CoffeeScript</a> and <a href="http://autotelicum.github.com/Smooth-CoffeeScript/">Smooth CoffeeScript</a></p>
+
+<!-- more -->
+
+
+<p>Kindlefodder takes a lot of routine work to itself.</p>
+
+<p>First, I specified document&#8217;s info, including cover:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">document</span>
+</span><span class='line'>  <span class="c1"># download cover image</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">!</span><span class="no">File</span><span class="o">.</span><span class="n">size?</span><span class="p">(</span><span class="s2">&quot;cover.gif&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="sb">`curl -s &#39;http://akamaicovers.oreilly.com/images/0636920024309/lrg.jpg&#39; &gt; cover.jpg`</span>
+</span><span class='line'>    <span class="n">run_shell_command</span> <span class="s2">&quot;convert cover.jpg -type Grayscale -resize &#39;400x300&gt;&#39; cover.gif&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="c1"># book&#39;s info</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The Little Book on CoffeeScript&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;author&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Alex MacCaw&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;cover&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cover.gif&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;masthead&#39;</span> <span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, we are fetching first page (with TOC) and formatting YAML with articles list:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">get_source_files</span>
+</span><span class='line'>  <span class="c1"># fetch first page (with TOC)</span>
+</span><span class='line'>  <span class="vi">@start_url</span> <span class="o">=</span> <span class="s2">&quot;http://arcturo.github.com/library/coffeescript/&quot;</span>
+</span><span class='line'>  <span class="vi">@start_doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span> <span class="n">run_shell_command</span><span class="p">(</span><span class="s2">&quot;curl -s </span><span class="si">#{</span><span class="vi">@start_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># create sections.yml</span>
+</span><span class='line'>  <span class="n">sections</span> <span class="o">=</span> <span class="o">[</span><span class="p">{</span>
+</span><span class='line'>    <span class="n">title</span><span class="ss">:&quot;Main&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">articles</span><span class="ss">:extract_articles</span>
+</span><span class='line'>    <span class="p">}</span><span class="o">]</span>
+</span><span class='line'>  <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">/sections.yml&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="n">sections</span><span class="o">.</span><span class="n">to_yaml</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Resulted <code>sections.yml</code> will look like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Main</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">:articles</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Introduction</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">:path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">articles/01_introduction.html</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Syntax</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">:path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">articles/02_syntax.html</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Classes</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">:path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">articles/03_classes.html</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Idioms</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">:path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">articles/04_idioms.html</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Compiling</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">:path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">articles/05_compiling.html</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Applications</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">:path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">articles/06_applications.html</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">:title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">The Bad Parts</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">:path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">articles/07_the_bad_parts.html</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, it has one section (<code>Main</code>) and a lot of articles. More complex books could have multiple sections, of course.</p>
+
+<p>Let&#8217;s take a look on <code>extract_articles</code> method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">extract_articles</span>
+</span><span class='line'>  <span class="c1"># iterating over Table of Contents and extracting articles</span>
+</span><span class='line'>  <span class="vi">@start_doc</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;ol.pages li a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">o</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">title</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">inner_text</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="no">FileUtils</span><span class="o">::</span><span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">/articles&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="n">title</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+</span><span class='line'>      <span class="n">path</span><span class="p">:</span> <span class="n">save_article_and_return_path</span><span class="p">(</span><span class="n">o</span><span class="o">[</span><span class="ss">:href</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And <code>save_article_and_return_path</code> method, which fetches actual article, cleans it, saves it and returns saved article path:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">save_article_and_return_path</span> <span class="n">href</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kp">nil</span>
+</span><span class='line'>  <span class="n">path</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">||</span> <span class="s2">&quot;articles/&quot;</span> <span class="o">+</span> <span class="n">href</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/^\//</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/\/$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># fetching article</span>
+</span><span class='line'>  <span class="n">full_url</span> <span class="o">=</span> <span class="vi">@start_url</span> <span class="o">+</span> <span class="n">href</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/^\//</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">html</span> <span class="o">=</span> <span class="n">run_shell_command</span> <span class="s2">&quot;curl -s </span><span class="si">#{</span><span class="n">full_url</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="c1"># cleaning article</span>
+</span><span class='line'>  <span class="n">article_doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span> <span class="n">html</span>
+</span><span class='line'>  <span class="n">b</span> <span class="o">=</span> <span class="n">article_doc</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="s2">&quot;.back&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">b</span><span class="o">.</span><span class="n">remove</span> <span class="k">if</span> <span class="n">b</span>
+</span><span class='line'>  <span class="c1"># saving article</span>
+</span><span class='line'>  <span class="n">res</span> <span class="o">=</span> <span class="n">article_doc</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="s1">&#39;#content&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">inner_html</span>
+</span><span class='line'>  <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="n">res</span><span class="p">}</span>
+</span><span class='line'>  <span class="n">path</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&#8217;m using beautiful <a href="http://nokogiri.org">Nokogiri</a> ruby library for chopping of HTML here.</p>
+
+<p>You don&#8217;t have to care about images, <code>.mobi</code> format and stuff like that, Kindlefodder does it for you.</p>
+
+<p>So, resulted recipes:</p>
+
+<ul>
+<li><a href="https://github.com/danchoi/kindlefodder/blob/master/recipes/little_book_on_coffeescript.rb">The Little Book on CoffeeScript</a></li>
+<li><a href="https://github.com/danchoi/kindlefodder/blob/master/recipes/smooth_coffeescript.rb">Smooth CoffeeScript</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Quake Live API]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/18/quake-live-api/"/>
+    <updated>2012-12-18T23:41:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/18/quake-live-api</id>
+    <content type="html"><![CDATA[<p><img class="right" src="http://www.wonderlandblog.com/.a/6a00d834515f7269e2011168984a2a970c-800wi"></p>
+
+<p><a href="http://www.quakelive.com">Quake Live</a> web frontend was written by people without any taste for good names &amp; with knowledge of <a href="http://me.veekun.com/blog/2012/04/09/php-a-fractal-of-bad-design/">PHP</a></p>
+
+<p>I spent an evening investigating their API, and here are some results:</p>
+
+<!-- more -->
+
+
+
+
+<div><script src='https://gist.github.com/4325640.js?file=_QuakeLiveApi.md'></script>
+<noscript><pre><code># Join match
+
+http://www.quakelive.com/#!join/688917
+
+# Match details
+
+http://www.quakelive.com/browser/details?ids=688917
+
+[match_details.json](#file-match_details-json)
+
+# My info load on login
+
+http://www.quakelive.com/user/load?_=1355812145565
+
+[load_info.json](#file-load_info-json)
+
+# Listing of currently played matches
+
+[http://www.quakelive.com/browser/list?filter=#{base64_encoded_options}](http://www.quakelive.com/browser/list?filter=eyJmaWx0ZXJzIjp7Imdyb3VwIjoiYW55IiwiZ2FtZV90eXBlIjoiYW55IiwiYXJlbmEiOiJhbnkiLCJzdGF0ZSI6ImFueSIsImRpZmZpY3VsdHkiOiJhbnkiLCJsb2NhdGlvbiI6ImFueSIsInByaXZhdGUiOjB9LCJhcmVuYV90eXBlIjoiIiwicGxheWVycyI6W10sImdhbWVfdHlwZXMiOltdLCJpZyI6MCwid2VsY29tZV9zZXJ2ZXJzIjoxLCJtYXhfc2VydmVycyI6M30%3D)
+
+
+Parameter filter is `Base64` encoded json object, eg:
+
+```JSON
+{
+    &quot;arena_type&quot;: &quot;&quot;, 
+    &quot;filters&quot;: {
+        &quot;arena&quot;: &quot;any&quot;, 
+        &quot;difficulty&quot;: &quot;any&quot;, 
+        &quot;game_type&quot;: &quot;any&quot;, 
+        &quot;group&quot;: &quot;friends&quot;, 
+        &quot;invitation_only&quot;: 0, 
+        &quot;location&quot;: &quot;ALL&quot;, 
+        &quot;premium_only&quot;: 0, 
+        &quot;private&quot;: 0, 
+        &quot;ranked&quot;: &quot;any&quot;, 
+        &quot;state&quot;: &quot;any&quot;
+    }, 
+    &quot;game_types&quot;: [
+        5, 
+        4, 
+        3, 
+        0, 
+        1, 
+        9, 
+        10, 
+        11, 
+        8, 
+        6
+    ], 
+    &quot;ig&quot;: 0, 
+    &quot;players&quot;: [
+        &quot;darvin_S_K_2&quot;
+    ]
+}
+```
+
+```JSON
+{
+    &quot;arena_type&quot;: &quot;tag&quot;, 
+    &quot;filters&quot;: {
+        &quot;arena&quot;: &quot;BASIC&quot;, 
+        &quot;difficulty&quot;: &quot;-1&quot;, 
+        &quot;game_type&quot;: &quot;1&quot;, 
+        &quot;group&quot;: &quot;any&quot;, 
+        &quot;invitation_only&quot;: 0, 
+        &quot;location&quot;: &quot;North America&quot;, 
+        &quot;premium_only&quot;: 0, 
+        &quot;private&quot;: 0, 
+        &quot;ranked&quot;: &quot;any&quot;, 
+        &quot;state&quot;: &quot;PRE_GAME&quot;
+    }, 
+    &quot;game_types&quot;: [
+        5, 
+        4, 
+        3, 
+        9, 
+        10, 
+        11, 
+        8, 
+        6
+    ], 
+    &quot;ig&quot;: 0, 
+    &quot;players&quot;: []
+}
+```
+
+[match_list.json](#file-match_list-json)
+
+# User info in HTML
+
+http://www.quakelive.com/profile/summary/darvin_S_K_2
+
+[user_info.json](#file-user_info-html)
+
+# Friend list
+
+http://www.quakelive.com/friends/manage/items
+
+[friend_list.json](#file-friend_list-json)
+</code></pre></noscript></div>
+
+
+<p>The purpose of this small research is to write <a href="http://hubot.github.com">Hubot</a> a script that notifies when particular users are playing.</p>
+
+<p>So, to keep things straight, clean and simple, I had to write <a href="nodejs.org">NodeJS</a> a library. Because I kinda don&#8217;t really like JavaScript, I had to write it on <a href="http://coffeescript.org">CoffeeScript</a>.</p>
+
+<p>Using wonderful Pivotal&#8217;s <a href="http://pivotal.github.com/jasmine/">Jasmine</a> testing framework, full TDD approach and very convenient <a href="https://github.com/kapoq/guard-jasmine-node">Guard</a> <a href="https://github.com/mhevery/jasmine-node">Jasmine Node</a>, I managed to roll out something working pretty quickly. So, that&#8217;s it: <a href="https://github.com/darvin/quake-live-api-node">Quake Live API</a> library for NodeJS</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Get Kitten: API to get kitten's image]]></title>
+    <link href="http://darvin.github.com/blog/2012/12/18/get-kitten-api-to-get-kitten-image/"/>
+    <updated>2012-12-18T20:53:00+00:00</updated>
+    <id>http://darvin.github.com/blog/2012/12/18/get-kitten-api-to-get-kitten-image</id>
+    <content type="html"><![CDATA[<p>Played around with Ruby and Heroku.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl http://getkitten.heroku.com/kitten.png?width=200&height=200</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://getkitten.herokuapp.com/kitten.png?width=300&height=280"></p>
+]]></content>
+  </entry>
+  
+</feed>
